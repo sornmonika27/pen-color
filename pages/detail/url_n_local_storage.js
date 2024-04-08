@@ -1,21 +1,22 @@
 // 2. URL Parameter: please get id from URL
 let id = 1;
+let url = ""; // please use a url from single pen from API document
 
-function getPen() {
+async function getPen() {
   // Fetch pen colors from API
-  fetch("https://pens-api.vercel.app/api/pens/" + id)
-    .then((response) => response.json())
-    .then((pen) => {
-      const penListDiv = document.getElementById("single-pen");
-      // 3. Local Storage : Save data to localStorage
-      saveLocalStorageData(pen);
+  try {
+    const response = await fetch(url);
+    const pen = await response.json();
 
-      const penElement = createPenElement(pen);
-      penListDiv.appendChild(penElement);
-    })
-    .catch((error) => {
-      console.error("Error fetching pen colors:", error);
-    });
+    const penListDiv = document.getElementById("single-pen");
+    // 3. Local Storage : Save data to localStorage
+    saveLocalStorageData(pen);
+
+    const penElement = createPenElement(pen);
+    penListDiv.appendChild(penElement);
+  } catch (error) {
+    console.error(`Get pen error: ${error.message}`);
+  }
 }
 
 // 3. Local Storage : Save data to localStorage
@@ -42,4 +43,3 @@ function createPenElement(pen) {
 
 // call function getPen
 getPen();
-
