@@ -1,7 +1,9 @@
 // 2. URL Parameter: please get id from URL
 let id = 1;
-let url = ""; // please use a url from single pen from API document
+let url = "https://pens-api.vercel.app/api/pens";
+// please use a url from single pen from API document
 
+l
 async function getPen() {
   // Fetch pen colors from API
   try {
@@ -43,3 +45,11 @@ function createPenElement(pen) {
 
 // call function getPen
 getPen();
+
+
+
+
+
+
+
+
